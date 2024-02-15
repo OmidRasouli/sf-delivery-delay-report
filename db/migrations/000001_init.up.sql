@@ -1,3 +1,12 @@
+-- Migration for creating the Vendor table
+CREATE TABLE vendors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Migration for creating the Order table
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
@@ -12,15 +21,6 @@ CREATE TABLE orders (
 );
 
 ALTER TABLE orders ADD CONSTRAINT fk_vendor FOREIGN KEY (vendor_id) REFERENCES vendors (id);
-
--- Migration for creating the Vendor table
-CREATE TABLE vendors (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
 
 -- Migration for creating the Agent table
 CREATE TABLE agents (
