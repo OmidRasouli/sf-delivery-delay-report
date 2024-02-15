@@ -13,6 +13,7 @@ type Order struct {
 	VendorID     uint   `gorm:"not null"`
 }
 
+// Vendor model
 type Vendor struct {
 	gorm.Model
 	Name   string `gorm:"not null"`
@@ -20,18 +21,21 @@ type Vendor struct {
 	Orders []Order
 }
 
+// Agent model
 type Agent struct {
 	gorm.Model
 	Name  string `gorm:"not null"`
 	Email string `gorm:"not null;unique"`
 }
 
+// Trip model
 type Trip struct {
 	gorm.Model
 	OrderID uint   `gorm:"not null"`
 	Status  string `gorm:"not null;default:'PENDING'"`
 }
 
+// Delay Report model
 type DelayReport struct {
 	gorm.Model
 	OrderID   uint   `gorm:"not null"`
