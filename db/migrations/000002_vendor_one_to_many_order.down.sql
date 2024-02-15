@@ -1,2 +1,0 @@
-ALTER TABLE orders DROP CONSTRAINT fk_vendor;
-ALTER TABLE orders DROP COLUMN vendor_id;
