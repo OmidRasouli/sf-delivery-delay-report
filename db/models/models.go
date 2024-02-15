@@ -1,16 +1,20 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 // Orders model
 type Order struct {
 	gorm.Model
-	UserID       uint   `gorm:"not null"`
-	Product      string `gorm:"not null"`
-	Quantity     int    `gorm:"not null"`
-	TimeDelivery int    `gorm:"not null"`
-	Status       string `gorm:"not null;default:'PENDING'"`
-	VendorID     uint   `gorm:"not null"`
+	UserID       uint      `gorm:"not null"`
+	Product      string    `gorm:"not null"`
+	Quantity     int       `gorm:"not null"`
+	TimeDelivery time.Time `gorm:"not null"`
+	Status       string    `gorm:"not null;default:'PENDING'"`
+	VendorID     uint      `gorm:"not null"`
 }
 
 // Vendor model
@@ -38,8 +42,8 @@ type Trip struct {
 // Delay Report model
 type DelayReport struct {
 	gorm.Model
-	OrderID   uint   `gorm:"not null"`
-	Reason    string `gorm:"not null"`
-	Reporter  string `gorm:"not null"`
-	Timestamp int64  `gorm:"not null"`
+	OrderID   uint      `gorm:"not null"`
+	Reason    string    `gorm:"not null"`
+	Reporter  string    `gorm:"not null"`
+	Timestamp time.Time `gorm:"not null"`
 }
