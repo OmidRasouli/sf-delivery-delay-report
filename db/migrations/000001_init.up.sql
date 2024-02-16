@@ -11,8 +11,6 @@ CREATE TABLE vendors (
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
-    product VARCHAR(255) NOT NULL,
-    quantity INT NOT NULL,
     time_delivery TIMESTAMPTZ NOT NULL,
     status VARCHAR(255) NOT NULL DEFAULT 'PENDING',
     vendor_id INT NOT NULL,
