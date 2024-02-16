@@ -10,8 +10,6 @@ import (
 type Order struct {
 	gorm.Model
 	UserID       uint      `gorm:"not null"`
-	Product      string    `gorm:"not null"`
-	Quantity     int       `gorm:"not null"`
 	TimeDelivery time.Time `gorm:"not null"`
 	Status       string    `gorm:"not null;default:'PENDING'"`
 	VendorID     uint      `gorm:"not null"`
