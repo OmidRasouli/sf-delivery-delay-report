@@ -5,4 +5,5 @@ echo "deb https://packagecloud.io/golang-migrate/migrate/ubuntu/ $(lsb_release -
 sudo apt list --upgradable
 sudo apt update
 sudo apt install -y migrate
-migrate -source file://db/migrations -database "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?sslmode=${DB_SSL_MODE}" up
+migrate -source file://internal/db/migrations -database "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?sslmode=${DB_SSL_MODE}" down -all
+migrate -source file://internal/db/migrations -database "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?sslmode=${DB_SSL_MODE}" up

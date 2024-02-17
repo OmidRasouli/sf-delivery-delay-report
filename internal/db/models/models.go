@@ -6,12 +6,18 @@ import (
 	"gorm.io/gorm"
 )
 
+// User model
+type User struct {
+	gorm.Model
+	Name  string `gorm:"not null"`
+	Email string `gorm:"not null;unique"`
+}
+
 // Orders model
 type Order struct {
 	gorm.Model
 	UserID       uint      `gorm:"not null"`
-	TimeDelivery time.Time `gorm:"not null"`
-	Status       string    `gorm:"not null;default:'PENDING'"`
+	DeliveryTime time.Time `gorm:"not null"`
 	VendorID     uint      `gorm:"not null"`
 }
 
@@ -40,8 +46,10 @@ type Trip struct {
 // Delay Report model
 type DelayReport struct {
 	gorm.Model
-	OrderID   uint      `gorm:"not null"`
-	Reason    string    `gorm:"not null"`
-	Reporter  string    `gorm:"not null"`
-	Timestamp time.Time `gorm:"not null"`
+	OrderID      uint      `gorm:"not null"`
+	VendorID     uint      `gorm:"not null"`
+	DeliveryTime time.Time `gorm:"not null"`
+	AgentID      int       `gorm:"default:-1"`
+	Reason       string
+	Solved       bool
 }

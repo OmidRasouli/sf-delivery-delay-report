@@ -14,7 +14,7 @@ var (
 )
 
 // Initialize db
-func Initialize() {
+func Initialize() (*gorm.DB, error) {
 	//Define a DSN and get values from ENV VAR
 	dsn := fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
@@ -28,11 +28,9 @@ func Initialize() {
 
 	//Connect to postgres db
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic("Failed to connect to database")
-	}
 
 	DB = db
+	return db, err
 }
 
 // Return db

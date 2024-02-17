@@ -10,5 +10,8 @@ DROP TABLE IF EXISTS orders;
 -- Migration for dropping the Vendor table
 DROP TABLE IF EXISTS vendors;
 
+-- Migration for dropping the User table
+DROP TABLE IF EXISTS users;
+
 -- Migration for dropping the Agent table
 DROP TABLE IF EXISTS agents;
