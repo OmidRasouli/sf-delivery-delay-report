@@ -59,6 +59,7 @@ The application uses [GORM](https://gorm.io/) as the ORM library to interact wit
 
 - Go installed on your machine
 - A PostgreSQL database
+- Or Docker + Docker compose
 
 ### Installation
 
@@ -108,4 +109,26 @@ The API will be available at [http://localhost:8080](http://localhost:8080/).
 migrate -source file://internal/db/migrations -database "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?sslmode=${DB_SSL_MODE}" down -all
 migrate -source file://internal/db/migrations -database "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?sslmode=${DB_SSL_MODE}" up
 go test -v -cover ./test
+```
+
+### Install on Docker:
+
+Before running on docker, create a .env file or export these environment variables:
+
+```bash
+DB_HOST=sf_postgres_db
+DB_USER=sf_user
+POSTGRES_USER=postgres
+DB_PASSWORD=OmidRasouli
+POSTGRES_PASSWORD=OmidRasouli
+DB_NAME=sf_delivery_delay_report
+DB_PORT=6543
+DB_SSL_MODE=disable
+
+```
+
+Now it is time to start docker:
+
+```bash
+sudo docker compose up -d
 ```
