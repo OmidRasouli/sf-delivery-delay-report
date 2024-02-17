@@ -10,13 +10,17 @@ import (
 )
 
 func TestAddOrder(t *testing.T) {
+	const (
+		orderCreateEndpoint = "/api/orders/create"
+		tripCreateEndpoint  = "/api/trips/create"
+	)
 	//Add order 1
 	order := models.Order{
 		UserID:       1,
 		DeliveryTime: time.Now().Add(time.Minute * 3),
 		VendorID:     2,
 	}
-	response := makeRequest("POST", "/api/orders/create", order)
+	response := makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 2
@@ -25,7 +29,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 10),
 		VendorID:     1,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 3
@@ -34,7 +38,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -2),
 		VendorID:     3,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 4
@@ -43,7 +47,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -15),
 		VendorID:     5,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 5
@@ -52,7 +56,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 7),
 		VendorID:     1,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 6
@@ -61,7 +65,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -4),
 		VendorID:     3,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 7
@@ -70,7 +74,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 8),
 		VendorID:     4,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 8
@@ -79,7 +83,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -7),
 		VendorID:     2,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 9
@@ -88,7 +92,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 22),
 		VendorID:     1,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 10
@@ -97,7 +101,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -6),
 		VendorID:     3,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 11
@@ -106,7 +110,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 1),
 		VendorID:     2,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 12
@@ -115,7 +119,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 4),
 		VendorID:     5,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 13
@@ -124,7 +128,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -3),
 		VendorID:     1,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 14
@@ -133,7 +137,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -2),
 		VendorID:     5,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 15
@@ -142,7 +146,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -3),
 		VendorID:     5,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 16
@@ -151,7 +155,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 10),
 		VendorID:     2,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 17
@@ -160,7 +164,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 17),
 		VendorID:     4,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 18
@@ -169,7 +173,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * -9),
 		VendorID:     1,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 19
@@ -178,7 +182,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 1),
 		VendorID:     5,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add order 20
@@ -187,7 +191,7 @@ func TestAddOrder(t *testing.T) {
 		DeliveryTime: time.Now().Add(time.Minute * 12),
 		VendorID:     4,
 	}
-	response = makeRequest("POST", "/api/orders/create", order)
+	response = makeRequest("POST", orderCreateEndpoint, order)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 3
@@ -195,7 +199,7 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 3,
 		Status:  "DELIVERED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 4
@@ -203,10 +207,10 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 4,
 		Status:  "PICKED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 8
@@ -214,7 +218,7 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 8,
 		Status:  "ASSIGNED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 10
@@ -222,7 +226,7 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 10,
 		Status:  "ASSIGNED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 13
@@ -230,7 +234,7 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 13,
 		Status:  "DELIVERED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 14
@@ -238,7 +242,7 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 14,
 		Status:  "PICKED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	//Add trip for order 18
@@ -246,6 +250,6 @@ func TestAddOrder(t *testing.T) {
 		OrderID: 18,
 		Status:  "ASSIGNED",
 	}
-	response = makeRequest("POST", "/api/trips/create", trip)
+	response = makeRequest("POST", tripCreateEndpoint, trip)
 	assert.Equal(t, http.StatusOK, response.Code)
 }

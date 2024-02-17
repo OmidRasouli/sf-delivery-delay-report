@@ -42,7 +42,11 @@ func TestMain(m *testing.M) {
 }
 
 func makeRequest(method, url string, body interface{}) *httptest.ResponseRecorder {
-	requestBody, _ := json.Marshal(body)
+	var requestBody []byte
+	if body != nil {
+		requestBody, _ = json.Marshal(body)
+	}
+
 	request, _ := http.NewRequest(method, url, bytes.NewBuffer(requestBody))
 	writer := httptest.NewRecorder()
 	router.ServeHTTP(writer, request)
