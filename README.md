@@ -69,22 +69,32 @@ The application uses [GORM](https://gorm.io/) as the ORM library to interact wit
    create database sf_delivery_delay_report with owner = sf_agent;
    grant all privileges on database sf_delivery_delay_report to sf_agent;
    ```
-2. Clone the repository:
+2. Create new environment variables to store DB's authentication details:
+
+   ```bash
+   DB_HOST=localhost
+   DB_USER=sf_agent
+   DB_PASSWORD=SomePassword
+   DB_NAME=sf_delivery_delay_report
+   DB_PORT=5432
+   DB_SSL_MODE=disable
+   ```
+3. Clone the repository:
 
    ```bash
    git clone https://github.com/your-username/sf-delivery-delay-report.git
    ```
-3. Change into the project directory:
+4. Change into the project directory:
 
    ```bash
    cd sf-delivery-delay-report
    ```
-4. Run this shell file:
+5. Run this shell file:
 
    ```bash
    bash ./init_db.sh
    ```
-5. Run the application:
+6. Run the application:
 
    ```bash
    go run main.go
