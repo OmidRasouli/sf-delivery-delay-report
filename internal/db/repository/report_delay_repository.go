@@ -12,6 +12,7 @@ import (
 type ReportDelayRepository interface {
 	ReportDelayOfOrder(orderID uint) (*models.Order, error)
 	CreateDelayReport(*models.DelayReport) (*models.DelayReport, string, error)
+	ReportDelayBetweenTimeIntervals(vendorID uint, startTime time.Time, endTime time.Time) ([]*models.DelayReport, error)
 }
 
 // ReportDelayRepositoryImpl implements the ReportDelayRepository interface
@@ -65,4 +66,17 @@ func (r *ReportDelayRepositoryImpl) CreateDelayReport(delayReport *models.DelayR
 	// No existing delay report with the same OrderID and Reason, proceed to create a new one
 	err = r.db.Create(delayReport).Error
 	return delayReport, "error", err
+}
+
+// ReportDelayBetweenTimeIntervals retrieves delay reports between two time intervals
+func (r *ReportDelayRepositoryImpl) ReportDelayBetweenTimeIntervals(vendorID uint, startTime, endTime time.Time) ([]*models.DelayReport, error) {
+	var delayReport []*models.DelayReport
+	err := r.db.Table("delay_reports").
+		Where("delay_reports.vendor_id = ? AND delay_reports.delivery_time >= ? AND delay_reports.delivery_time <= ?", vendorID, startTime, endTime).
+		Find(&delayReport).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return delayReport, nil
 }
