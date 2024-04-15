@@ -12,4 +12,7 @@ func RegisterReportDelayAPI(router *gin.Engine, reportDelayHandler *handler.Repo
 
 	// POST reportDelay by ID API endpoint
 	api.POST("/:id", reportDelayHandler.ReportDelayOfOrder)
+
+	// GET ReportDelayBetweenTimeIntervals by (ID, Start time, End time) passing through query string
+	api.GET("/between", reportDelayHandler.ReportDelayBetweenTimeIntervals)
 }
