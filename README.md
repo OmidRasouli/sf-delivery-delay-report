@@ -41,6 +41,7 @@ The application uses [GORM](https://gorm.io/) as the ORM library to interact wit
 
 * **API Endpoints** :
 * `GET /api/report-delay/:id`: Retrieve delay reports for a specific order.
+* `GET /api/report-delay/between?id=VENDOR_ID&start_time=EPOCH_TIME&end_time=EPOCH_TIME`: Retrieve all delayed data for a specific vendor between two different time
 
 #### 5. Agent Module
 
