@@ -66,6 +66,7 @@ CREATE TABLE delay_reports (
     order_id INT NOT NULL,
     vendor_id INT NOT NULL,
     delivery_time TIMESTAMPTZ NOT NULL,
+new_delivery_time TIMESTAMPTZ NOT NULL,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMPTZ,
