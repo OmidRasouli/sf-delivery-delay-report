@@ -46,10 +46,11 @@ type Trip struct {
 // Delay Report model
 type DelayReport struct {
 	gorm.Model
-	OrderID      uint      `gorm:"not null"`
-	VendorID     uint      `gorm:"not null"`
-	DeliveryTime time.Time `gorm:"not null"`
-	AgentID      int       `gorm:"default:-1"`
-	Reason       string
-	Solved       bool
+	OrderID         uint      `gorm:"not null"`
+	VendorID        uint      `gorm:"not null"`
+	DeliveryTime    time.Time `gorm:"not null"`
+	NewDeliveryTime time.Time `gorm:"not null"`
+	AgentID         int       `gorm:"default:-1"`
+	Reason          string
+	Solved          bool
 }
